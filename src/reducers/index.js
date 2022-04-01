@@ -1,28 +1,7 @@
-import { UPDATE_CURRENCIES, UPDATE_USER_EMAIL } from '../actions/index';
+import { combineReducers } from 'redux';
+import user from './user';
+import wallet from './wallet';
 
-const INITIAL_STATE = {
-  user: {
-    email: '',
-  },
-  wallet: {
-    currencies: [],
-    expenses: [],
-  },
-};
+const rootReducer = combineReducers({ user, wallet });
 
-export default function reducers(state = INITIAL_STATE, action) {
-  switch (action.type) {
-  case UPDATE_USER_EMAIL:
-    return {
-      ...state,
-      user: { email: action.payload },
-    };
-  case UPDATE_CURRENCIES:
-    return {
-      ...state,
-      wallet: { currencies: [...action.payload], expenses: [...state.wallet.expenses] },
-    };
-  default:
-    return state;
-  }
-}
+export default rootReducer;
