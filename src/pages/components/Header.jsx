@@ -12,9 +12,9 @@ export default function Header() {
         {expenses.length > 0
           ? expenses
             .map(
-              ({ value, currency, exchangeRates }) => parseFloat(value)
-              * parseFloat(exchangeRates[currency].ask)
-            )
+              ({ value, currency, exchangeRates }) => {
+                parseFloat(value) * parseFloat(exchangeRates[currency].ask)
+              })
             .reduce((acc, curr) => acc + curr, 0)
             .toFixed(2)
           : 0}
