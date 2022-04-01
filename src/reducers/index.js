@@ -7,6 +7,8 @@ const INITIAL_STATE = {
   wallet: {
     currencies: [],
     expenses: [],
+    total: 0,
+    currency: ' BRL',
   },
 };
 
