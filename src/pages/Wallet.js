@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrencies, updateExpenses } from '../actions/index';
 import Header from './components/Header';
+import Table from './components/Table';
 
 function Wallet() {
   const dispatch = useDispatch();
@@ -126,6 +127,7 @@ function Wallet() {
         </label>
         <button type="submit">Adicionar despesa</button>
       </form>
+      <Table />
     </div>
   );
 }
