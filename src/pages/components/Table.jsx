@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { editExpense, rmExpense } from '../../actions/index';
 
-function Table() {
-  const expenses = useSelector(({ wallet }) => wallet?.expenses);
+function Table(props) {
+  const dispatch = useDispatch();
+  const { expenses } = props;
   return (
     <table>
       <thead>
@@ -26,9 +28,8 @@ function Table() {
           value,
           currency,
           exchangeRates,
-          id,
-        }) => (
-          <tr key={ id }>
+        },index) => (
+          <tr key={ index }>
             <td>{description}</td>
             <td>{tag}</td>
             <td>{method}</td>
@@ -38,8 +39,20 @@ function Table() {
             <td>{(value * exchangeRates[currency].ask).toFixed(2)}</td>
             <td>Real</td>
             <td>
-              <button type="button">Editar</button>
-              <button type="button">Excluir</button>
+              <button
+                type="button"
+                data-testid="edit-btn"
+                onClick={ () => dispatch(editExpense(index)) }
+              >
+                Editar despesa
+              </button>
+              <button
+                type="button"
+                data-testid="delete-btn"
+                onClick={ () => dispatch(rmExpense(expenses[index])) }
+              >
+                Excluir
+              </button>
             </td>
           </tr>
         ))}

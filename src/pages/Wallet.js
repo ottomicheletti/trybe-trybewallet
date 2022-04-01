@@ -39,9 +39,9 @@ function Wallet() {
   };
 
   const handleSubmit = async (e) => {
-    setInputValue((prevState) => ({ ...prevState, id: expenses.length + 1 }));
     e.preventDefault();
-    fetchCurrencies();
+    await fetchCurrencies();
+    setInputValue((prevState) => ({ ...prevState, id: expenses.length + 1 }));
     const { value, currency, method, tag, description, id, exchangeRates } = inputValue;
     dispatch(updateExpenses({
       value,
@@ -75,6 +75,7 @@ function Wallet() {
             name="currency"
             id="currency"
             onChange={ handleChange }
+            data-testid="currency-input"
           >
             {currencies.map((currency, index) => (
               <option key={ index }>{ currency }</option>
@@ -120,7 +121,7 @@ function Wallet() {
         </label>
         <button type="submit">Adicionar despesa</button>
       </form>
-      <Table />
+      <Table expenses={ expenses } />
     </div>
   );
 }

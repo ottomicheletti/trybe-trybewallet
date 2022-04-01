@@ -9,3 +9,11 @@ export const getCurrencies = (payload) => ({ type: GET_CURRENCIES, payload });
 export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 
 export const updateExpenses = (payload) => ({ type: UPDATE_EXPENSES, payload });
+
+export const RM_EXPENSE = 'RM_EXPENSE';
+
+export const rmExpense = (payload) => ({ type: RM_EXPENSE, payload });
+
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+
+export const editExpense = (payload) => ({ type: EDIT_EXPENSE, payload });
