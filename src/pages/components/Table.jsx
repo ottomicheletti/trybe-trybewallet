@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editExpense, rmExpense } from '../../actions/index';
 
-function Table(props) {
+function Table() {
   const dispatch = useDispatch();
   const expenses = useSelector(({ wallet }) => wallet?.expenses);
   return (
