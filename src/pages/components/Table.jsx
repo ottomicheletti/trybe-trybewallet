@@ -26,7 +26,7 @@ function Table() {
           value,
           currency,
           exchangeRates,
-          id
+          id,
         }) => (
           <tr key={ id }>
             <td>{description}</td>
@@ -45,7 +45,7 @@ function Table() {
         ))}
       </tbody>
     </table>
-  )
+  );
 }
 
 export default Table;

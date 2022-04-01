@@ -9,7 +9,6 @@ function Wallet() {
   const [inputValue, setInputValue] = useState({
     value: '',
     currency: 'USD',
-    name: 'Dólar Americano',
     method: 'Dinheiro',
     tag: 'Alimento',
     description: '',
@@ -36,13 +35,7 @@ function Wallet() {
   }, [fetchCurrencies]);
 
   const handleChange = ({ target: { name, value } }) => {
-    if (name !== 'currency') {
-      setInputValue((prevState) => ({ ...prevState, [name]: value }));
-    } else {
-      const { exchangeRates } = inputValue;
-      const string = exchangeRates[value].name.split('/')[0];
-      setInputValue((prevState) => ({ ...prevState, name: string, currency: value }));
-    }
+    setInputValue((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
