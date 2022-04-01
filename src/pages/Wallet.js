@@ -17,8 +17,6 @@ function Wallet() {
   });
   const currencies = useSelector(({ wallet }) => wallet?.currencies);
   const expenses = useSelector(({ wallet }) => wallet?.expenses);
-  // const exchangeRates = useSelector(({ wallet }) => wallet?.exchangeRates);
-  // const currency = useSelector(({ wallet }) => wallet?.currency);
 
   const fetchCurrencies = useCallback(async () => {
     try {
