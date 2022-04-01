@@ -11,8 +11,8 @@ export default function Header() {
       <span data-testid="total-field">
         {expenses.length > 0
           ? expenses.map(({ value, currency, exchangeRates }) => (
-              parseFloat(value) * parseFloat(exchangeRates[currency].ask)
-            )).reduce((acc, curr) => acc + curr, 0).toFixed(2)
+            parseFloat(value) * parseFloat(exchangeRates[currency].ask)
+          )).reduce((acc, curr) => acc + curr, 0).toFixed(2)
           : 0}
       </span>
       <span data-testid="header-currency-field"> BRL</span>
