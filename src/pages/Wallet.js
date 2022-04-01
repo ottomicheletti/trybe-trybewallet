@@ -48,7 +48,16 @@ function Wallet() {
     setInputValue((prevState) => ({ ...prevState, id: expenses.length + 1 }));
     e.preventDefault();
     fetchCurrencies();
-    dispatch(updateExpenses(inputValue));
+    const { value, currency, method, tag, description, id, exchangeRates } = inputValue;
+    dispatch(updateExpenses({
+      value,
+      currency,
+      method,
+      tag,
+      description,
+      id,
+      exchangeRates,
+    }));
     setInputValue((prevState) => ({ ...prevState, value: '' }));
   };
 
