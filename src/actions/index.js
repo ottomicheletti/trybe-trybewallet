@@ -1,6 +1,6 @@
 export const SAVE_USER_EMAIL = 'SAVE_USER_EMAIL';
 
-export const userEmail = (payload) => ({ type: SAVE_USER_EMAIL, payload });
+export const updateUserEmail = (payload) => ({ type: SAVE_USER_EMAIL, payload });
 
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 

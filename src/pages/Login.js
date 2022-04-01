@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { userEmail } from '../actions/index';
+import { useDispatch } from 'react-redux';
+import { updateUserEmail } from '../actions/index';
 
 function Login(props) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const SEIS = 6;
+  const dispatch = useDispatch();
 
-  const submitBtn = (event) => {
-    event.preventDefault();
-    const { history, saveUserEmail } = props;
-    saveUserEmail(email);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { history } = props;
+    dispatch(updateUserEmail(email));
     history.push('/carteira');
   };
 
   return (
-    <form className="login-page">
+    <form className="login-page" onSubmit={ handleSubmit }>
       <fieldset>
         <input
           type="text"
@@ -34,7 +35,6 @@ function Login(props) {
         <button
           type="submit"
           disabled={ !(regex.test(email) && pwd.length >= SEIS) }
-          onClick={ submitBtn }
         >
           Entrar
         </button>
@@ -43,15 +43,10 @@ function Login(props) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  saveUserEmail: (info) => dispatch(userEmail(info)),
-});
-
 Login.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
-  saveUserEmail: PropTypes.func,
 }.isRequired;
 
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;
