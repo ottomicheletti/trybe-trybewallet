@@ -1,4 +1,4 @@
-import { GET_CURRENCIES, SAVE_USER_EMAIL } from '../actions/index';
+import { UPDATE_CURRENCIES, UPDATE_USER_EMAIL } from '../actions/index';
 
 const INITIAL_STATE = {
   user: {
@@ -12,15 +12,15 @@ const INITIAL_STATE = {
 
 export default function reducers(state = INITIAL_STATE, action) {
   switch (action.type) {
-  case SAVE_USER_EMAIL:
+  case UPDATE_USER_EMAIL:
     return {
       ...state,
       user: { email: action.payload },
     };
-  case GET_CURRENCIES:
+  case UPDATE_CURRENCIES:
     return {
       ...state,
-      wallet: { currencies: [...state.wallet.currencies, ...action.payload] },
+      wallet: { currencies: [...action.payload], expenses: [...state.wallet.expenses] },
     };
   default:
     return state;
