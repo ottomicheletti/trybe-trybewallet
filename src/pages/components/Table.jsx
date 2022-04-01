@@ -1,10 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editExpense, rmExpense } from '../../actions/index';
 
 function Table(props) {
   const dispatch = useDispatch();
-  const { expenses } = props;
+  const expenses = useSelector(({ wallet }) => wallet?.expenses);
   return (
     <table>
       <thead>
@@ -28,7 +28,7 @@ function Table(props) {
           value,
           currency,
           exchangeRates,
-        },index) => (
+        }, index) => (
           <tr key={ index }>
             <td>{description}</td>
             <td>{tag}</td>
