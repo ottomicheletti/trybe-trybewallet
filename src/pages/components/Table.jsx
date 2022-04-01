@@ -49,7 +49,8 @@ function Table(props) {
               <button
                 type="button"
                 data-testid="delete-btn"
-                onClick={ () => dispatch(rmExpense(expenses[index])) }
+                onClick={ () => dispatch(rmExpense(expenses
+                  .filter((exp) => exp !== expenses[index]))) }
               >
                 Excluir
               </button>

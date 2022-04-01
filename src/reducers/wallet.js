@@ -20,7 +20,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case RM_EXPENSE:
     return {
       ...state,
-      expenses: state.expenses.filter((expense) => expense !== action.payload),
+      expenses: action.payload,
     };
   default:
     return state;
