@@ -7,11 +7,12 @@ function Wallet() {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState({
     value: '',
-    coin: '',
+    currency: 'USD',
     method: '',
-    category: '',
+    tag: '',
     description: '',
     id: 0,
+    exchangeRates: {},
   });
   const currencies = useSelector(({ wallet }) => wallet?.currencies);
   const expenses = useSelector(({ wallet }) => wallet?.expenses);
@@ -22,6 +23,7 @@ function Wallet() {
       const data = await response.json();
       delete data.USDT;
       dispatch(getCurrencies(Object.keys(data)));
+      setInputValue((prevState) => ({ ...prevState, exchangeRates: data }));
     } catch (e) {
       console.error(e);
     }
@@ -38,7 +40,9 @@ function Wallet() {
   const handleSubmit = async (e) => {
     setInputValue((prevState) => ({ ...prevState, id: expenses.length + 1 }));
     e.preventDefault();
+    fetchCurrencies();
     dispatch(updateExpenses(inputValue));
+    setInputValue((prevState) => ({ ...prevState, value: '' }));
   };
 
   return (
@@ -48,21 +52,22 @@ function Wallet() {
         <label htmlFor="value">
           Valor
           <input
+            value={ inputValue.value }
             type="number"
             name="value"
             onChange={ handleChange }
             data-testid="value-input"
           />
         </label>
-        <label htmlFor="coin">
+        <label htmlFor="currency">
           Moeda
           <select
-            name="coin"
-            id="coin"
+            name="currency"
+            id="currency"
             onChange={ handleChange }
           >
-            {currencies.map((coin, index) => (
-              <option key={ index }>{ coin }</option>
+            {currencies.map((currency, index) => (
+              <option key={ index }>{ currency }</option>
             ))}
           </select>
         </label>
@@ -70,6 +75,7 @@ function Wallet() {
           Método de pagamento
           <select
             name="method"
+            id="method"
             onChange={ handleChange }
             data-testid="method-input"
           >
@@ -78,10 +84,11 @@ function Wallet() {
             <option value="Cartão de débito">Cartão de débito</option>
           </select>
         </label>
-        <label htmlFor="category">
+        <label htmlFor="tag">
           Categoria
           <select
-            name="category"
+            name="tag"
+            id="tag"
             onChange={ handleChange }
             data-testid="tag-input"
           >
@@ -101,7 +108,7 @@ function Wallet() {
             data-testid="description-input"
           />
         </label>
-        <button type="submit">Adicionar Despesa</button>
+        <button type="submit">Adicionar despesa</button>
       </form>
     </div>
   );
