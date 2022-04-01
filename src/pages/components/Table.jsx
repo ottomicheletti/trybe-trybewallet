@@ -28,8 +28,9 @@ function Table() {
           value,
           currency,
           exchangeRates,
+          id,
         }, index) => (
-          <tr key={ index }>
+          <tr key={ id }>
             <td>{description}</td>
             <td>{tag}</td>
             <td>{method}</td>
