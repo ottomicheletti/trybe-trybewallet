@@ -17,6 +17,8 @@ function Wallet() {
   });
   const currencies = useSelector(({ wallet }) => wallet?.currencies);
   const expenses = useSelector(({ wallet }) => wallet?.expenses);
+  // const exchangeRates = useSelector(({ wallet }) => wallet?.exchangeRates);
+  // const currency = useSelector(({ wallet }) => wallet?.currency);
 
   const fetchCurrencies = useCallback(async () => {
     try {
@@ -35,7 +37,13 @@ function Wallet() {
   }, [fetchCurrencies]);
 
   const handleChange = ({ target: { name, value } }) => {
-    setInputValue((prevState) => ({ ...prevState, [name]: value }));
+    if (name !== 'currency') {
+      setInputValue((prevState) => ({ ...prevState, [name]: value }));
+    } else {
+      const { exchangeRates } = inputValue;
+      const string = exchangeRates[value].name.split('/')[0];
+      setInputValue((prevState) => ({ ...prevState, name: string, currency: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
