@@ -8,6 +8,7 @@ function Wallet() {
   const [inputValue, setInputValue] = useState({
     value: '',
     currency: 'USD',
+    name: 'Dólar Americano',
     method: '',
     tag: '',
     description: '',
