@@ -15,15 +15,15 @@ function Table() {
     <table>
       <thead>
         <tr>
-          <th scope="col">Descrição</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Método de pagamento</th>
-          <th scope="col">Valor</th>
-          <th scope="col">Moeda</th>
-          <th scope="col">Câmbio utilizado</th>
-          <th scope="col">Valor convertido</th>
-          <th scope="col">Moeda de conversão</th>
-          <th scope="col">Editar/Excluir</th>
+          <th>Descrição</th>
+          <th>Tag</th>
+          <th>Método de pagamento</th>
+          <th>Valor</th>
+          <th>Moeda</th>
+          <th>Câmbio utilizado</th>
+          <th>Valor convertido</th>
+          <th>Moeda de conversão</th>
+          <th>Editar/Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -36,16 +36,32 @@ function Table() {
           exchangeRates,
           id,
         }, index) => (
-          <tr key={ id } role="row">
-            <td role="cell">{description}</td>
-            <td role="cell">{tag}</td>
-            <td role="cell">{method}</td>
-            <td role="cell">{parseFloat(value).toFixed(2)}</td>
-            <td role="cell">{exchangeRates[currency].name}</td>
-            <td role="cell">{parseFloat(exchangeRates[currency].ask).toFixed(2)}</td>
-            <td role="cell">{(value * exchangeRates[currency].ask).toFixed(2)}</td>
-            <td role="cell">Real</td>
-            <td role="cell">
+          <tr key={ id } >
+            <td name={description}>
+              {description}
+            </td>
+            <td name={tag}>
+              {tag}
+            </td>
+            <td name={method}>
+              {method}
+            </td>
+            <td name={parseFloat(value).toFixed(2)}>
+              {parseFloat(value).toFixed(2)}
+            </td>
+            <td name={exchangeRates[currency].name}>
+              {exchangeRates[currency].name}
+            </td>
+            <td name={parseFloat(exchangeRates[currency].ask).toFixed(2)}>
+              {parseFloat(exchangeRates[currency].ask).toFixed(2)}
+            </td>
+            <td name={(value * exchangeRates[currency].ask).toFixed(2)}>
+              {(value * exchangeRates[currency].ask).toFixed(2)}
+            </td>
+            <td name="Real">
+              Real
+            </td>
+            <td>
               <button
                 type="button"
                 data-testid="edit-btn"
