@@ -36,26 +36,26 @@ function Table() {
           exchangeRates,
           id,
         }, index) => (
-          <tr key={ id } >
-            <td name={description}>
+          <tr key={ id }>
+            <td name={  description }>
               {description}
             </td>
-            <td name={tag}>
+            <td name={ tag }>
               {tag}
             </td>
-            <td name={method}>
+            <td name={ method }>
               {method}
             </td>
-            <td name={parseFloat(value).toFixed(2)}>
+            <td name={ parseFloat(value).toFixed(2) }>
               {parseFloat(value).toFixed(2)}
             </td>
-            <td name={exchangeRates[currency].name}>
+            <td name={ exchangeRates[currency].name }>
               {exchangeRates[currency].name}
             </td>
-            <td name={parseFloat(exchangeRates[currency].ask).toFixed(2)}>
+            <td name={ parseFloat(exchangeRates[currency].ask).toFixed(2) }>
               {parseFloat(exchangeRates[currency].ask).toFixed(2)}
             </td>
-            <td name={(value * exchangeRates[currency].ask).toFixed(2)}>
+            <td name={ (value * exchangeRates[currency].ask).toFixed(2) }>
               {(value * exchangeRates[currency].ask).toFixed(2)}
             </td>
             <td name="Real">
