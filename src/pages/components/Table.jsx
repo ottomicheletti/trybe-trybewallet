@@ -15,15 +15,15 @@ function Table() {
     <table>
       <thead>
         <tr>
-          <th>Descrição</th>
-          <th>Tag</th>
-          <th>Método de pagamento</th>
-          <th>Valor</th>
-          <th>Moeda</th>
-          <th>Câmbio utilizado</th>
-          <th>Valor convertido</th>
-          <th>Moeda de conversão</th>
-          <th>Editar/Excluir</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Tag</th>
+          <th scope="col">Método de pagamento</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Moeda</th>
+          <th scope="col">Câmbio utilizado</th>
+          <th scope="col">Valor convertido</th>
+          <th scope="col">Moeda de conversão</th>
+          <th scope="col">Editar/Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +36,7 @@ function Table() {
           exchangeRates,
           id,
         }, index) => (
-          <tr key={ id }>
+          <tr key={ id } role="row">
             <td role="cell">{description}</td>
             <td role="cell">{tag}</td>
             <td role="cell">{method}</td>
