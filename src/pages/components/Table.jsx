@@ -36,7 +36,7 @@ function Table() {
           exchangeRates,
           id,
         }, index) => (
-          <tr key={ id } >
+          <tr key={ id }>
             <td role="cell">{description}</td>
             <td role="cell">{tag}</td>
             <td role="cell">{method}</td>
