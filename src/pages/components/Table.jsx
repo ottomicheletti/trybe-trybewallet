@@ -49,7 +49,8 @@ function Table() {
               <button
                 type="button"
                 data-testid="edit-btn"
-                onClick={ () => handleEditBtn(index, { description, tag, method, value, currency, exchangeRates, id }) }
+                onClick={ () => handleEditBtn(index,
+                  { description, tag, method, value, currency, exchangeRates, id }) }
               >
                 Editar
               </button>
