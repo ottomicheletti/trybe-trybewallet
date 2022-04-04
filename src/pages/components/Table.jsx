@@ -36,16 +36,16 @@ function Table() {
           exchangeRates,
           id,
         }, index) => (
-          <tr key={ id }>
-            <td>{description}</td>
-            <td>{tag}</td>
-            <td>{method}</td>
-            <td>{parseFloat(value).toFixed(2)}</td>
-            <td>{exchangeRates[currency].name}</td>
-            <td>{parseFloat(exchangeRates[currency].ask).toFixed(2)}</td>
-            <td>{(value * exchangeRates[currency].ask).toFixed(2)}</td>
-            <td>Real</td>
-            <td>
+          <tr key={ id } >
+            <td role="cell">{description}</td>
+            <td role="cell">{tag}</td>
+            <td role="cell">{method}</td>
+            <td role="cell">{parseFloat(value).toFixed(2)}</td>
+            <td role="cell">{exchangeRates[currency].name}</td>
+            <td role="cell">{parseFloat(exchangeRates[currency].ask).toFixed(2)}</td>
+            <td role="cell">{(value * exchangeRates[currency].ask).toFixed(2)}</td>
+            <td role="cell">Real</td>
+            <td role="cell">
               <button
                 type="button"
                 data-testid="edit-btn"
