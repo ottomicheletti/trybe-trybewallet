@@ -10,10 +10,14 @@ export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 
 export const updateExpenses = (payload) => ({ type: UPDATE_EXPENSES, payload });
 
-export const RM_EXPENSE = 'RM_EXPENSE';
-
-export const rmExpense = (payload) => ({ type: RM_EXPENSE, payload });
-
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export const editExpense = (payload) => ({ type: EDIT_EXPENSE, payload });
+
+export const EDITING_STATUS = 'EDIT_STATUS';
+
+export const editingStatus = (payload) => ({ type: EDITING_STATUS, payload });
+
+export const ON_EDIT = 'ON_EDIT';
+
+export const onEdit = (payload) => ({ type: ON_EDIT, payload });

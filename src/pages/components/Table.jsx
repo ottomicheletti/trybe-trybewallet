@@ -1,10 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editExpense, rmExpense } from '../../actions/index';
+import { editExpense, editingStatus, onEdit } from '../../actions/index';
 
 function Table() {
   const dispatch = useDispatch();
   const expenses = useSelector(({ wallet }) => wallet?.expenses);
+
+  const handleEditBtn = (index, expense) => {
+    dispatch(editingStatus(true));
+    dispatch(onEdit([index, expense]));
+  };
+
   return (
     <table>
       <thead>
@@ -43,14 +49,14 @@ function Table() {
               <button
                 type="button"
                 data-testid="edit-btn"
-                onClick={ () => dispatch(editExpense(index)) }
+                onClick={ () => handleEditBtn(index, { description, tag, method, value, currency, exchangeRates, id }) }
               >
-                Editar despesa
+                Editar
               </button>
               <button
                 type="button"
                 data-testid="delete-btn"
-                onClick={ () => dispatch(rmExpense(expenses
+                onClick={ () => dispatch(editExpense(expenses
                   .filter((exp) => exp !== expenses[index]))) }
               >
                 Excluir
