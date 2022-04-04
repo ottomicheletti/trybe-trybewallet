@@ -37,7 +37,7 @@ function Table() {
           id,
         }, index) => (
           <tr key={ id }>
-            <td name={  description }>
+            <td name={ description }>
               {description}
             </td>
             <td name={ tag }>
