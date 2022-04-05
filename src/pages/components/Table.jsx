@@ -4,7 +4,7 @@ import { editExpense, editingStatus, onEdit } from '../../actions/index';
 
 function Table() {
   const dispatch = useDispatch();
-  const expenses = useSelector(({ wallet }) => wallet?.expenses);
+  const { expenses } = useSelector(({ wallet }) => wallet);
 
   const handleEditBtn = (index, expense) => {
     dispatch(editingStatus(true));
@@ -37,30 +37,14 @@ function Table() {
           id,
         }, index) => (
           <tr key={ id }>
-            <td name={ description }>
-              {description}
-            </td>
-            <td name={ tag }>
-              {tag}
-            </td>
-            <td name={ method }>
-              {method}
-            </td>
-            <td name={ parseFloat(value).toFixed(2) }>
-              {parseFloat(value).toFixed(2)}
-            </td>
-            <td name={ exchangeRates[currency].name }>
-              {exchangeRates[currency].name}
-            </td>
-            <td name={ parseFloat(exchangeRates[currency].ask).toFixed(2) }>
-              {parseFloat(exchangeRates[currency].ask).toFixed(2)}
-            </td>
-            <td name={ (value * exchangeRates[currency].ask).toFixed(2) }>
-              {(value * exchangeRates[currency].ask).toFixed(2)}
-            </td>
-            <td name="Real">
-              Real
-            </td>
+            <td>{description}</td>
+            <td>{tag}</td>
+            <td>{method}</td>
+            <td>{parseFloat(value).toFixed(2)}</td>
+            <td>{exchangeRates[currency].name.split('/')[0]}</td>
+            <td>{parseFloat(exchangeRates[currency].ask).toFixed(2)}</td>
+            <td>{(value * exchangeRates[currency].ask).toFixed(2)}</td>
+            <td>Real</td>
             <td>
               <button
                 type="button"

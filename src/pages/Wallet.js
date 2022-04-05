@@ -16,10 +16,8 @@ function Wallet() {
     id: 0,
     exchangeRates: {},
   });
-  const currencies = useSelector(({ wallet }) => wallet?.currencies);
-  const expenses = useSelector(({ wallet }) => wallet?.expenses);
-  const editStatus = useSelector(({ wallet }) => wallet?.editStatus);
-  const onEdit = useSelector(({ wallet }) => wallet?.onEdit);
+
+  const { currencies, expenses, editStatus, onEdit } = useSelector(({ wallet }) => wallet);
 
   const fetchCurrencies = useCallback(async () => {
     try {
@@ -60,7 +58,8 @@ function Wallet() {
     await fetchCurrencies();
     setInputValue((prevState) => ({ ...prevState, id: expenses.length + 1 }));
     dispatch(updateExpenses(inputValue));
-    setInputValue((prevState) => ({ ...prevState,
+    setInputValue((prevState) => ({
+      ...prevState,
       value: '',
       currency: 'USD',
       method: 'Dinheiro',
@@ -81,15 +80,16 @@ function Wallet() {
       }
     });
 
-    dispatch(editExpense(newExpenses));
-    dispatch(editingStatus(false));
-    setInputValue((prevState) => ({ ...prevState,
+    setInputValue((prevState) => ({
+      ...prevState,
       value: '',
       currency: 'USD',
       method: 'Dinheiro',
       tag: 'Alimento',
-      description: '',
-      id: 0 }));
+      description: '' }));
+
+    dispatch(editExpense(newExpenses));
+    dispatch(editingStatus(false));
   };
 
   return (
