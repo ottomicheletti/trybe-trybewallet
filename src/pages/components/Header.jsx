@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function Header() {
-  const { email }= useSelector(({ user }) => user);
+  const { email } = useSelector(({ user }) => user);
   const { expenses } = useSelector(({ wallet }) => wallet);
   return (
     <header>
