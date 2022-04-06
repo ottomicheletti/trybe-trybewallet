@@ -73,7 +73,6 @@ function Wallet() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    await fetchCurrencies();
     const newExpenses = [];
     expenses.forEach((expense, index) => {
       if (index === onEdit[0]) {
@@ -84,13 +83,6 @@ function Wallet() {
     });
     dispatch(editExpense(newExpenses));
     dispatch(editingStatus(false));
-    // setInputValue((prevState) => ({
-    //   ...prevState,
-    //   value: '',
-    //   currency: 'USD',
-    //   method: 'Dinheiro',
-    //   tag: 'Alimento',
-    //   description: '' }));
   };
 
   return (
